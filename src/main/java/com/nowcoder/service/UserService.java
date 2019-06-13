@@ -31,6 +31,10 @@ public class UserService
         return userDao.selectById(id);
     }
 
+    public User selectByName(String name) {
+        return userDao.selectByName(name);
+    }
+
     public Map<String, String> register(String username, String password)
     {
         Map<String, String> map = new HashMap<>();
