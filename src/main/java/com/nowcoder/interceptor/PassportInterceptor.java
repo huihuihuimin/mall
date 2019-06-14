@@ -27,7 +27,7 @@ import java.util.Date;
 
 /**
  * 拦截器<br>
- * 〈〉
+ * 〈用于跨用户界面判断是否登陆过〉
  *
  * @author LSN
  * @create 2019/6/13

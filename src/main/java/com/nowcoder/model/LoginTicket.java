@@ -14,7 +14,7 @@ import java.util.Date;
 
 /**
  * 〈一句话功能简述〉<br> 
- * 〈〉
+ * 〈用于用户登录后保持登录状态，类似于共享session〉
  *
  * @author LSN
  * @create 2019/6/13

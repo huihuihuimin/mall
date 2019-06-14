@@ -4,7 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by rainday on 16/6/30.
+ * 〈一句话功能简述〉<br>
+ * 〈用于将复杂信息返回至前端界面〉
+ *
+ * @author LSN
+ * @create 2019/6/13
+ * @since 1.0.0
  */
 public class ViewObject
 {

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * 〈一句话功能简述〉<br> 
- * 〈〉
+ * 〈使用threadlocal为每个线程保存当前的用户信息，并将其注入spring让其代管〉
  *
  * @author LSN
  * @create 2019/6/13

@@ -44,4 +44,9 @@ public class MessageService
     {
         return messageDao.getConvesationUnreadCount(userId, conversationId);
     }
+
+    public void initUnreadCount(String conversationId)
+    {
+        messageDao.initUnreadCount(conversationId);
+    }
 }
