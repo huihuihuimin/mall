@@ -7,7 +7,12 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 /**
- * Created by nowcoder on 2016/7/2.
+ * 〈一句话功能简述〉<br>
+ * 〈〉
+ *
+ * @author LSN
+ * @create 2019/6/12
+ * @since 1.0.0
  */
 @Mapper
 public interface QuestionDao

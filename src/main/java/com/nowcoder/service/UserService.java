@@ -14,7 +14,12 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 /**
- * Created by nowcoder on 2016/7/2.
+ * 〈一句话功能简述〉<br>
+ * 〈〉
+ *
+ * @author LSN
+ * @create 2019/6/14
+ * @since 1.0.0
  */
 @Service
 public class UserService

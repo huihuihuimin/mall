@@ -58,7 +58,7 @@ public class CommentController
             if (hostHolder.getUser() != null)
                 comment.setUserId(hostHolder.getUser().getId());
             else
-                comment.setUserId(WendaUtil.getAnonymousUserid());
+                comment.setUserId(WendaUtil.ANONYMOUS_USERID);
             comment.setCreatedDate(new Date());
             comment.setEntityType(EntityType.ENTITY_QUESTION);
             comment.setEntityId(questionId);

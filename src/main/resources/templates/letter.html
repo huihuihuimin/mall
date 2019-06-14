@@ -20,7 +20,11 @@
 				<div class="chat-headbox">
 					#if ($conversation.unread!=0)
                         <span class="msg-num">
-                            $conversation.unread
+                            #if($conversation.unread<=99)
+	                            $conversation.unread
+	                        #else
+	                            99+
+	                        #end
                         </span>
 					#end
 					<a class="list-head">

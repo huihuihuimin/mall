@@ -12,6 +12,7 @@ package com.nowcoder.controller;
 
 import com.nowcoder.model.*;
 import com.nowcoder.service.CommentService;
+import com.nowcoder.service.LikeService;
 import com.nowcoder.service.QuestionService;
 import com.nowcoder.service.UserService;
 import com.nowcoder.utils.WendaUtil;
@@ -51,6 +52,9 @@ public class QuestionController
     @Autowired
     CommentService commentService;
 
+    @Autowired
+    LikeService likeService;
+
     @RequestMapping(value = {"/question/add"}, method = {RequestMethod.POST})
     @ResponseBody
     public String addQuestion(@RequestParam("title") String title, @RequestParam("content") String content)
@@ -83,15 +87,21 @@ public class QuestionController
         Question question = questionService.selectQuestionById(qid);
         model.addAttribute("question", question);
 
-        List<Comment> commentList = commentService.getCommentsByEntity( qid, EntityType.ENTITY_QUESTION);
+        List<Comment> commentList = commentService.getCommentsByEntity(qid, EntityType.ENTITY_QUESTION);
         int commentCount = commentService.getCommentCount(qid, EntityType.ENTITY_QUESTION);
 
         List<ViewObject> comments = new ArrayList<>();
-        for(Comment comment : commentList)
+        for (Comment comment : commentList)
         {
             ViewObject vo = new ViewObject();
-            vo.set("comment",comment);
-            vo.set("user",userService.getUser(comment.getUserId()));
+            vo.set("comment", comment);
+            if (hostHolder.getUser() == null)
+                vo.set("liked", 0);
+            else
+                vo.set("liked", likeService.getLikeStatus(hostHolder.getUser().getId(), EntityType.ENTITY_COMMENT,
+                                                          comment.getEntityId()));
+            vo.set("likeCount", likeService.getLikeCount(EntityType.ENTITY_COMMENT, comment.getEntityId()));
+            vo.set("user", userService.getUser(comment.getUserId()));
             comments.add(vo);
         }
         model.addAttribute("comments", comments);

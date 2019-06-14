@@ -8,17 +8,18 @@ import java.security.MessageDigest;
 import java.util.Map;
 
 /**
- * Created by nowcoder on 2016/7/3.
+ * 〈一句话功能简述〉<br>
+ * 〈〉
+ *
+ * @author LSN
+ * @create 2019/6/14
+ * @since 1.0.0
  */
 public class WendaUtil {
     private static final Logger logger = LoggerFactory.getLogger(WendaUtil.class);
 
-    private static int ANONYMOUS_USERID = -1;
-
-    public static int getAnonymousUserid()
-    {
-        return ANONYMOUS_USERID;
-    }
+    public static int ANONYMOUS_USERID = 1;
+    public static int SYSTEM_USERID = 888;
 
     public static String getJSONString(int code, String msg)
     {

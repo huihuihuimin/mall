@@ -1,7 +1,12 @@
 package com.nowcoder.model;
 
 /**
- * Created by nowcoder on 2016/7/9.
+ * 〈一句话功能简述〉<br>
+ * 〈〉
+ *
+ * @author LSN
+ * @create 2019/6/12
+ * @since 1.0.0
  */
 public class EntityType {
     public static int ENTITY_QUESTION = 1;

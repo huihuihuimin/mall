@@ -22,6 +22,7 @@ package com.nowcoder.dao;
 import com.nowcoder.model.Comment;
 import org.apache.ibatis.annotations.*;
 
+import java.lang.annotation.Target;
 import java.util.List;
 
 /**
@@ -52,4 +53,7 @@ public interface CommentDao
 
     @Update({"update ",TABLE_NAME," set status=#{status} where id=#{id}"})
     int updateStatus(@Param("id") int id, @Param("status") int status);
+
+    @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME," where id=#{id}"})
+    Comment getCommentById(int id);
 }
