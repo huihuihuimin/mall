@@ -54,4 +54,9 @@ public class QuestionService
     {
         return questionDao.updateCommentCount(entityId,count);
     }
+
+    public Question getQuestionById(int entityId)
+    {
+        return questionDao.getQuestionById(entityId);
+    }
 }

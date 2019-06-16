@@ -2,8 +2,12 @@ package com.nowcoder;
 
 import com.nowcoder.dao.QuestionDao;
 import com.nowcoder.dao.UserDao;
+import com.nowcoder.model.EntityType;
 import com.nowcoder.model.Question;
 import com.nowcoder.model.User;
+import com.nowcoder.service.FollowService;
+import com.nowcoder.utils.RedisKeyUtil;
+import com.nowcoder.utils.WendaUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +30,9 @@ public class InitDatabaseTests
     @Autowired
     QuestionDao questionDAO;
 
+    @Autowired
+    FollowService followService;
+
     @Test
     public void contextLoads()
     {
@@ -38,6 +45,11 @@ public class InitDatabaseTests
             user.setPassword("");
             user.setSalt("");
             userDAO.addUser(user);
+
+            for(int j=1;j<i;j++)
+            {
+                followService.follow(j, EntityType.ENTITY_USER,i);
+            }
 
             user.setPassword("newpassword");
             userDAO.updatePassword(user);

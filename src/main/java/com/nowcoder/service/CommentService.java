@@ -61,4 +61,8 @@ public class CommentService
     {
         return commentDao.updateStatus(commentId, 1) > 0;
     }
+
+    public int getUserCommentCount(int userId) {
+        return commentDao.getUserCommentCount(userId);
+    }
 }
