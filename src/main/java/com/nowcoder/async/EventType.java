@@ -28,14 +28,6 @@ public enum EventType
     UNFOLLOW(5);
 
     private int value;
-
-    EventType(int value)
-    {
-        this.value = value;
-    }
-
-    public int getValue()
-    {
-        return value;
-    }
+    EventType(int value) { this.value = value; }
+    public int getValue() { return value; }
 }

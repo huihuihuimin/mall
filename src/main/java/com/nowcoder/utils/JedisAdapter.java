@@ -293,7 +293,7 @@ public class JedisAdapter implements InitializingBean
         return 0;
     }
 
-    public Double zscore(String key,String member)
+    public Double zscore(String key, String member)
     {
         Jedis jedis = null;
         try
@@ -306,7 +306,9 @@ public class JedisAdapter implements InitializingBean
         } finally
         {
             if (jedis != null)
+            {
                 jedis.close();
+            }
         }
         return null;
     }

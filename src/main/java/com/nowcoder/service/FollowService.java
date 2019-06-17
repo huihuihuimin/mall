@@ -100,7 +100,7 @@ public class FollowService
         return getIdsFromSet(jedisAdapter.zrevrange(followeeKey, offset, count));
     }
 
-    public long getFollowerCount(int entityId, int entityType)
+    public long getFollowerCount(int entityType, int entityId)
     {
         String followerKey = RedisKeyUtil.getFollowerKey(entityType, entityId);
         return jedisAdapter.zcard(followerKey);
@@ -112,7 +112,7 @@ public class FollowService
         return jedisAdapter.zcard(followeeKey);
     }
 
-    public boolean isFollower(int userId, int entityId, int entityType)
+    public boolean isFollower(int userId, int entityType, int entityId)
     {
         String followerKey = RedisKeyUtil.getFollowerKey(entityType, entityId);
         return jedisAdapter.zscore(followerKey, String.valueOf(userId)) != null;
