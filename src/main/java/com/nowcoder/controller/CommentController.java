@@ -10,6 +10,9 @@
  */
 package com.nowcoder.controller;
 
+import com.nowcoder.async.EventModel;
+import com.nowcoder.async.EventProducer;
+import com.nowcoder.async.EventType;
 import com.nowcoder.model.Comment;
 import com.nowcoder.model.EntityType;
 import com.nowcoder.model.HostHolder;
@@ -47,6 +50,9 @@ public class CommentController
     @Autowired
     HostHolder hostHolder;
 
+    @Autowired
+    EventProducer eventProducer;
+
     @RequestMapping(value = {"/addComment"}, method = {RequestMethod.POST})
     public String addComment(@RequestParam(value = "content") String content,
                              @RequestParam(value = "questionId") int questionId)
@@ -65,6 +71,9 @@ public class CommentController
             commentService.addComment(comment);
             int count = commentService.getCommentCount(comment.getEntityId(),comment.getEntityType());
             questionService.updateCommentCount(comment.getEntityId(),count);
+
+            eventProducer.fireEvent(new EventModel(EventType.COMMENT).setActorId(comment.getUserId())
+                                                                     .setEntityId(questionId));
         } catch (Exception e)
         {
             logger.error("添加异常" + e.getMessage());

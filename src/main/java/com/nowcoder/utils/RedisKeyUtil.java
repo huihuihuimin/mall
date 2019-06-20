@@ -10,6 +10,10 @@
  */
 package com.nowcoder.utils;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * 〈一句话功能简述〉<br>
  * 〈用于生成Redis的key，保证安全〉

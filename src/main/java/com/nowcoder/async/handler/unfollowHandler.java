@@ -16,9 +16,12 @@ import com.nowcoder.async.EventType;
 import com.nowcoder.model.EntityType;
 import com.nowcoder.model.Message;
 import com.nowcoder.model.User;
+import com.nowcoder.service.FeedService;
 import com.nowcoder.service.MessageService;
 import com.nowcoder.service.QuestionService;
 import com.nowcoder.service.UserService;
+import com.nowcoder.utils.JedisAdapter;
+import com.nowcoder.utils.RedisKeyUtil;
 import com.nowcoder.utils.WendaUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -47,10 +50,20 @@ public class unfollowHandler implements EventHandler
     @Autowired
     QuestionService questionService;
 
+    @Autowired
+    JedisAdapter jedisAdapter;
+
+    @Autowired
+    FeedService feedService;
+
     @Override
     public void doHandle(EventModel model)
     {
-        System.out.println("unfollow dohandle");
+        int actorId = model.getActorId();
+        int entityOwnerId = model.getEntityOwnerId();
+        String timelineKey = RedisKeyUtil.getTimelineKey(actorId);
+        jedisAdapter.lrme(timelineKey,entityOwnerId);
+//        System.out.println("unfollow dohandle");
     }
 
     @Override

@@ -160,6 +160,42 @@ public class JedisAdapter implements InitializingBean
         return 0;
     }
 
+    public long lrme(String key,int id)
+    {
+        Jedis jedis = null;
+        try
+        {
+            jedis = jedisPool.getResource();
+            return jedis.lrem(key,100l,String.valueOf(id));
+        } catch (Exception e)
+        {
+            logger.error("设置失败" + e.getMessage());
+        } finally
+        {
+            if (jedis != null)
+                jedis.close();
+        }
+        return 0;
+    }
+
+    public List<String> lrange(String key,int start,int end)
+    {
+        Jedis jedis = null;
+        try
+        {
+            jedis = jedisPool.getResource();
+            return jedis.lrange(key, start, end);
+        } catch (Exception e)
+        {
+            logger.error("设置失败" + e.getMessage());
+        } finally
+        {
+            if (jedis != null)
+                jedis.close();
+        }
+        return null;
+    }
+
     public List<String> brpop(int time, String key)
     {
         Jedis jedis = null;
